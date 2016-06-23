@@ -1,24 +1,37 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/olekukonko/tablewriter"
+	"gopkg.in/urfave/cli.v2"
 
 	"./artifact"
 )
 
 func main() {
-	artifacts := artifact.GetInfo("rxjava")
+	app := cli.NewApp()
 
-	fmt.Println(">> " + artifacts[0].Id)
+	app.Commands = []*cli.Command{
+		{
+			Name:    "search",
+			Aliases: []string{"s"},
+			Usage:   "search artifact",
+			Action: func(c *cli.Context) error {
+				artifacts := artifact.GetInfo(c.Args().First())
 
-	table := tablewriter.NewWriter(os.Stdout)
-	table.SetHeader([]string{"Group Id", "Artifact Id", "Version"})
+				table := tablewriter.NewWriter(os.Stdout)
+				table.SetHeader([]string{"Group Id", "Artifact Id", "Version"})
 
-	for _, artifact := range artifacts {
-		table.Append([]string{artifact.G, artifact.A, artifact.LatestVersion})
+				for _, artifact := range artifacts {
+					table.Append([]string{artifact.G, artifact.A, artifact.LatestVersion})
+				}
+				table.Render()
+
+				return nil
+			},
+		},
 	}
-	table.Render()
+
+	app.Run(os.Args)
 }

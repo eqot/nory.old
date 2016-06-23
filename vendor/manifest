@@ -12,6 +12,24 @@
 			"repository": "https://github.com/olekukonko/tablewriter",
 			"revision": "daf2955e742cf123959884fdff4685aa79b63135",
 			"branch": "master"
+		},
+		{
+			"importpath": "github.com/urfave/cli",
+			"repository": "https://github.com/urfave/cli",
+			"revision": "4205e9c4ee9672a8df5bb4fe486a8aa07e1e4037",
+			"branch": "master"
+		},
+		{
+			"importpath": "gopkg.in/urfave/cli.v2",
+			"repository": "https://gopkg.in/urfave/cli.v2",
+			"revision": "ef7fea16bccc2304964dbc9bfb95e6ba49d3440f",
+			"branch": "v2"
+		},
+		{
+			"importpath": "gopkg.in/yaml.v2",
+			"repository": "https://gopkg.in/yaml.v2",
+			"revision": "a83829b6f1293c91addabc89d0571c246397bbf4",
+			"branch": "v2"
 		}
 	]
 }
