@@ -31,6 +31,24 @@ func main() {
 				return nil
 			},
 		},
+
+		{
+			Name:    "install",
+			Aliases: []string{"i"},
+			Usage:   "install artifact",
+			Action: func(c *cli.Context) error {
+				artifact := artifact.Find(c.Args().First())
+
+				table := tablewriter.NewWriter(os.Stdout)
+				table.SetHeader([]string{"Group Id", "Artifact Id", "Version"})
+
+				table.Append([]string{artifact.G, artifact.A, artifact.LatestVersion})
+
+				table.Render()
+
+				return nil
+			},
+		},
 	}
 
 	app.Run(os.Args)

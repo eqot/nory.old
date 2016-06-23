@@ -29,6 +29,10 @@ func GetInfo(name string) []Artifact {
 	return artifacts.Response.Docs
 }
 
+func Find(name string) Artifact {
+	return GetInfo(name)[0]
+}
+
 type Artifacts struct {
 	ResponseHeader ResponseHeader
 	Response       Response
